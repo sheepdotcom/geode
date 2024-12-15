@@ -229,9 +229,19 @@ bool ModItem::init(ModSource&& source) {
         },
         [this](server::ServerModMetadata const& metadata) {
             geode::log::debug("mod tags {}", metadata.tags);
-            auto ptr = &metadata;
-            auto ptr2 = &metadata.tags;
-            geode::log::debug("metadata {} tags {}", reinterpret_cast<uintptr_t>(ptr), reinterpret_cast<uintptr_t>(ptr2));
+            auto ptr = reinterpret_cast<uintptr_t>(&metadata);
+            auto ptrid = reinterpret_cast<uintptr_t>(&metadata.id);
+            auto ptrft = reinterpret_cast<uintptr_t>(&metadata.featured);
+            auto ptrdc = reinterpret_cast<uintptr_t>(&metadata.downloadCount);
+            auto ptrdev = reinterpret_cast<uintptr_t>(&metadata.developers);
+            auto ptrver = reinterpret_cast<uintptr_t>(&metadata.versions);
+            auto ptrtag = reinterpret_cast<uintptr_t>(&metadata.tags);
+            auto ptrabt = reinterpret_cast<uintptr_t>(&metadata.about);
+            auto ptrchl = reinterpret_cast<uintptr_t>(&metadata.changelog);
+            auto ptrrep = reinterpret_cast<uintptr_t>(&metadata.repository);
+            auto ptrcrt = reinterpret_cast<uintptr_t>(&metadata.createdAt);
+            auto ptrupt = reinterpret_cast<uintptr_t>(&metadata.updatedAt);
+            geode::log::debug("metadata {} id {} featured {} downloadCount {} developers {} versions {} tags {} about {} changelog {} repository {} createdAt {} updatedAt {}", ptr, ptrid, ptrft, ptrdc, ptrdev, ptrver, ptrtag, ptrabt, ptrchl, ptrrep, ptrcrt, ptrupt);
             // todo: there has to be a better way to deal with the short/long alternatives
             if (metadata.featured) {
                 m_badgeContainer->addChild(CCSprite::createWithSpriteFrameName("tag-featured.png"_spr));
