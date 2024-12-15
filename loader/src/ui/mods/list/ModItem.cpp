@@ -228,9 +228,9 @@ bool ModItem::init(ModSource&& source) {
             }
         },
         [this](server::ServerModMetadata const& metadata) {
-            geode::log::debug(mod tags "{}", metadata.tags);
+            geode::log::debug("mod tags {}", metadata.tags);
             auto ptr = &metadata;
-            geode::log::debug(tag address "{}", reinterpret_cast<uintptr_t>(ptr));
+            geode::log::debug("tag address {}", reinterpret_cast<uintptr_t>(ptr));
             // todo: there has to be a better way to deal with the short/long alternatives
             if (metadata.featured) {
                 m_badgeContainer->addChild(CCSprite::createWithSpriteFrameName("tag-featured.png"_spr));
