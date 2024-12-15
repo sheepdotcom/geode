@@ -230,17 +230,17 @@ bool ModItem::init(ModSource&& source) {
         [this](server::ServerModMetadata const& metadata) {
             geode::log::debug("mod tags {}", metadata.tags);
             auto ptr = reinterpret_cast<uintptr_t>(&metadata);
-            auto ptrid = reinterpret_cast<uintptr_t>(&metadata.id);
-            auto ptrft = reinterpret_cast<uintptr_t>(&metadata.featured);
-            auto ptrdc = reinterpret_cast<uintptr_t>(&metadata.downloadCount);
-            auto ptrdev = reinterpret_cast<uintptr_t>(&metadata.developers);
-            auto ptrver = reinterpret_cast<uintptr_t>(&metadata.versions);
-            auto ptrtag = reinterpret_cast<uintptr_t>(&metadata.tags);
-            auto ptrabt = reinterpret_cast<uintptr_t>(&metadata.about);
-            auto ptrchl = reinterpret_cast<uintptr_t>(&metadata.changelog);
-            auto ptrrep = reinterpret_cast<uintptr_t>(&metadata.repository);
-            auto ptrcrt = reinterpret_cast<uintptr_t>(&metadata.createdAt);
-            auto ptrupt = reinterpret_cast<uintptr_t>(&metadata.updatedAt);
+            auto ptrid = reinterpret_cast<uintptr_t>(&metadata.id) - ptr;
+            auto ptrft = reinterpret_cast<uintptr_t>(&metadata.featured) - ptr;
+            auto ptrdc = reinterpret_cast<uintptr_t>(&metadata.downloadCount) - ptr;
+            auto ptrdev = reinterpret_cast<uintptr_t>(&metadata.developers) - ptr;
+            auto ptrver = reinterpret_cast<uintptr_t>(&metadata.versions) - ptr;
+            auto ptrtag = reinterpret_cast<uintptr_t>(&metadata.tags) - ptr;
+            auto ptrabt = reinterpret_cast<uintptr_t>(&metadata.about) - ptr;
+            auto ptrchl = reinterpret_cast<uintptr_t>(&metadata.changelog) - ptr;
+            auto ptrrep = reinterpret_cast<uintptr_t>(&metadata.repository) - ptr;
+            auto ptrcrt = reinterpret_cast<uintptr_t>(&metadata.createdAt) - ptr;
+            auto ptrupt = reinterpret_cast<uintptr_t>(&metadata.updatedAt) - ptr;
             geode::log::debug("metadata {} id {} featured {} downloadCount {} developers {} versions {} tags {} about {} changelog {} repository {} createdAt {} updatedAt {}", ptr, ptrid, ptrft, ptrdc, ptrdev, ptrver, ptrtag, ptrabt, ptrchl, ptrrep, ptrcrt, ptrupt);
             // todo: there has to be a better way to deal with the short/long alternatives
             if (metadata.featured) {
