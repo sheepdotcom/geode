@@ -33,7 +33,7 @@ bool ModList::init(ModListSource* src, CCSize const& size) {
     m_source = src;
     m_source->reset();
 
-    geode::log::debug("{}", reinterpret_cast<uintptr_t>(&m_page))
+    geode::log::debug("{}", reinterpret_cast<uintptr_t>(&m_page));
     
     m_list = ScrollLayer::create(size);
     this->addChildAtPosition(m_list, Anchor::Bottom, ccp(-m_list->getScaledContentWidth() / 2, 0));
