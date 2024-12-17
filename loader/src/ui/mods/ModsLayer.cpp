@@ -639,7 +639,9 @@ void ModsLayer::onEnterTransitionDidFinish() {
 
 void ModsLayer::gotoTab(ModListSource* src) {
     // Update selected tab
+    geode::log::debug("src {}", reinterpret_cast<uintptr_t>(&src));
     for (auto tab : m_tabs) {
+        geode::log::debug("tab {}", reinterpret_cast<uintptr_t>(&tab));
         auto selected = tab->getUserData() == static_cast<void*>(src);
         static_cast<GeodeTabSprite*>(tab->getNormalImage())->select(selected);
         tab->setEnabled(!selected);
