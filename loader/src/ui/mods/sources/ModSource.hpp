@@ -33,7 +33,9 @@ public:
     std::optional<server::ServerModUpdate> hasUpdates() const;
 
     auto visit(auto&& func) {
-        geode::log::debug("furry catgirls or foxgirls {}", reinterpret_cast<uintptr_t>(&m_value));
+        auto ptr = reinterpret_cast<uintptr_t>(this);
+        auto ptrowo = reinterpret_cast<uintptr_t>(&m_value);
+        geode::log::debug("furry catgirls or foxgirls {}", ptr, ptrowo);
         return std::visit(func, m_value);
     }
 
