@@ -23,6 +23,9 @@ bool ModItem::init(ModSource&& source) {
     m_source = std::move(source);
     this->setID("ModItem");
 
+    auto ptrUwU = reinterpret_cast<uintptr_t>(&m_source);
+    geode::log::debug("nya UwU {}", ptrUwU);
+
     m_bg = CCScale9Sprite::create("square02b_small.png");
     m_bg->setID("bg");
     m_bg->setOpacity(0);
