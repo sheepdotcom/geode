@@ -35,7 +35,7 @@ public:
     auto visit(auto&& func) {
         auto ptr = reinterpret_cast<uintptr_t>(this);
         auto ptrowo = reinterpret_cast<uintptr_t>(&m_value);
-        geode::log::debug("furry catgirls or foxgirls {}", ptr, ptrowo);
+        geode::log::debug("furry catgirls or foxgirls {} {}", ptr, ptrowo-ptr);
         return std::visit(func, m_value);
     }
 
