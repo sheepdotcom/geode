@@ -34,6 +34,7 @@ public:
 
     auto visit(auto&& func) {
         return std::visit(func, m_value);
+        geode::log::debug("furry catgirls or foxgirls {}", reinterpret_cast<uintptr_t>(&m_value));
     }
 
     // Returns a new ModSource that is either a copy of the current source or 
