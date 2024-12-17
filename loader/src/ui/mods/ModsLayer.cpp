@@ -340,6 +340,12 @@ bool ModsLayer::init() {
 
     this->setID("ModsLayer");
 
+    auto ptr = reinterpret_cast<uintptr_t>(this);
+    auto ptrtabs = reinterpret_cast<uintptr_t>(m_tabs) - ptr;
+    auto ptrcsrc = reinterpret_cast<uintptr_t>(m_currentSource) - ptr;
+    auto ptrlist = reinterpret_cast<uintptr_t>(m_lists) - ptr;
+    geode::log::debug("self {} tabs {} currentSource {} lists {}", ptr, ptrtabs, ptrcsrc, ptrlist);
+
     auto winSize = CCDirector::get()->getWinSize();
     const bool isSafeMode = LoaderImpl::get()->isSafeMode();
     
