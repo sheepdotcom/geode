@@ -24,7 +24,8 @@ bool ModItem::init(ModSource&& source) {
     this->setID("ModItem");
 
     auto ptrUwU = reinterpret_cast<uintptr_t>(&m_source);
-    geode::log::debug("nya UwU {}", ptrUwU);
+    auto ptrrrl = reinterpret_cast<uintptr_t>(&m_restartRequiredLabel);
+    geode::log::debug("nya UwU {} rrl {}", ptrUwU, ptrrrl);
 
     m_bg = CCScale9Sprite::create("square02b_small.png");
     m_bg->setID("bg");
