@@ -41,8 +41,8 @@ LoadModSuggestionTask loadModSuggestion(LoadProblem const& problem) {
     return LoadModSuggestionTask::immediate(std::nullopt);
 }
 
-ModSource::ModSource(Mod* mod) : m_value(mod) {geode::log::debug("source this {}", reinterpret_cast<uintptr_t>(&m_value));}
-ModSource::ModSource(server::ServerModMetadata&& metadata) : m_value(metadata) {geode::log::debug("source this online {}", reinterpret_cast<uintptr_t>(&m_value));}
+ModSource::ModSource(Mod* mod) : m_value(mod) {/*geode::log::debug("source this {}", reinterpret_cast<uintptr_t>(&m_value));*/}
+ModSource::ModSource(server::ServerModMetadata&& metadata) : m_value(metadata) {/*geode::log::debug("source this online {}", reinterpret_cast<uintptr_t>(&m_value));*/}
 
 std::string ModSource::getID() const {
     return std::visit(makeVisitor {
