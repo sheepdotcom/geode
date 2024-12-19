@@ -82,7 +82,7 @@ bool ModPopup::setup(ModSource&& src) {
     m_noElasticity = true;
 
     auto ptr = reinterpret_cast<uintptr_t>(this);
-    auto ptrbtn = reinterpret_cast<uintptr_t>(&m_installBtn);
+    auto ptrbtn = reinterpret_cast<uintptr_t>(m_installBtn);
     geode::log::debug("mod popup: {} self {}: install btn: {}", src.getID(), ptr, ptrbtn - ptr);
 
     this->setID(std::string(Mod::get()->expandSpriteName(fmt::format("popup-{}", src.getID()))));
