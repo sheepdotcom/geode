@@ -787,7 +787,7 @@ void ModPopup::updateState() {
     auto ptrbtn = reinterpret_cast<uintptr_t>(m_installBtn);
     auto ptrbtn2 = reinterpret_cast<uintptr_t>(&m_installBtn);
     auto ptrsrc = reinterpret_cast<uintptr_t>(&m_source);
-    geode::log::debug("mod popup: {} self {}: install btn: {} 2?: {} src: {}", src.getID(), ptr, ptrbtn - ptr, ptrbtn2 - ptr, ptrsrc - ptr);
+    geode::log::debug("mod popup: {} self {}: install btn: {} 2?: {} src: {}", m_source.getID(), ptr, ptrbtn - ptr, ptrbtn2 - ptr, ptrsrc - ptr);
 
     ModPopupUIEvent(std::make_unique<ModPopupUIEvent::Impl>(this)).post();
 }
