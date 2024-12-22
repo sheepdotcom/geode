@@ -81,12 +81,6 @@ bool ModPopup::setup(ModSource&& src) {
     m_source = std::move(src);
     m_noElasticity = true;
 
-    auto ptr = reinterpret_cast<uintptr_t>(this);
-    auto ptrbtn = reinterpret_cast<uintptr_t>(m_installBtn);
-    auto ptrbtn2 = reinterpret_cast<uintptr_t>(&m_installBtn);
-    auto ptrsrc = reinterpret_cast<uintptr_t>(&m_source);
-    geode::log::debug("mod popup: {} self {}: install btn: {} 2?: {} src: {}", src.getID(), ptr, ptrbtn - ptr, ptrbtn2 - ptr, ptrsrc - ptr);
-
     this->setID(std::string(Mod::get()->expandSpriteName(fmt::format("popup-{}", src.getID()))));
 
     if (src.asMod() == Mod::get()) {
@@ -788,6 +782,12 @@ void ModPopup::updateState() {
     }
 
     m_installMenu->updateLayout();
+
+    auto ptr = reinterpret_cast<uintptr_t>(this);
+    auto ptrbtn = reinterpret_cast<uintptr_t>(m_installBtn);
+    auto ptrbtn2 = reinterpret_cast<uintptr_t>(&m_installBtn);
+    auto ptrsrc = reinterpret_cast<uintptr_t>(&m_source);
+    geode::log::debug("mod popup: {} self {}: install btn: {} 2?: {} src: {}", src.getID(), ptr, ptrbtn - ptr, ptrbtn2 - ptr, ptrsrc - ptr);
 
     ModPopupUIEvent(std::make_unique<ModPopupUIEvent::Impl>(this)).post();
 }
